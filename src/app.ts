@@ -7,7 +7,7 @@ class App {
     public app: express.Application;
     public port: number;
 
-    constructor(controllers: BaseController[], port: number) {
+    constructor(controllers: BaseController[], port) {
         this.app = express();
         this.port = port;
 
