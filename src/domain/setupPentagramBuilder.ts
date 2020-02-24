@@ -26,7 +26,7 @@ export class SetupPentagramBuilder {
     
     private static getSetupPentagram(date: BaZiDate) {
         const { year, month, day, hour, season } = date;
-        debugger;
+
         const yearPentagram = this.getSetupPentagramPart(year);
         const monthPentagram = this.getSetupPentagramPart(month);
         const datePentagram = this.getSetupPentagramPart(day);

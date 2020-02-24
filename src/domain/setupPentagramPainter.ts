@@ -26,7 +26,7 @@ export class SetupPentagramPainter {
 
     private static setColorsOn(inner: PentagramEnergy, outer: PentagramEnergy, outerColor: string) {
         outer.color = outerColor;
-        inner.color = outerColor === 'blue' ? Constants.Red : Constants.Blue;
+        inner.color = outerColor === Constants.Blue ? Constants.Red : Constants.Blue;
     }
 
     private static setColorsIfUnusual(innerEnergies: PentagramEnergy[], outerEnergies: PentagramEnergy[]) {

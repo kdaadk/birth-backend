@@ -15,11 +15,13 @@
   },
   "scripts": {
     "start": "ts-node ./src/server.ts",
-    "dev": "ts-node ./src/server.ts"
+    "dev": "ts-node ./src/server.ts",
+    "start:debug": "nodemon --config nodemon-debug.json"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
-    "@types/express": "^4.17.2"
+    "@types/express": "^4.17.2",
+    "tsconfig-paths": "^3.9.0"
   },
   "description": ""
 }
