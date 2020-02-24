@@ -1,12 +1,13 @@
 ﻿import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import { BaseController } from "./controllers/base.controller";
 let cors = require('cors');
 
 class App {
     public app: express.Application;
     public port: number;
 
-    constructor(controllers, port) {
+    constructor(controllers: BaseController[], port: number) {
         this.app = express();
         this.port = port;
 
@@ -19,7 +20,7 @@ class App {
         this.app.use(cors());
     }
 
-    private initializeControllers(controllers) {
+    private initializeControllers(controllers: BaseController[]) {
         controllers.forEach((controller) => {
             this.app.use('/', controller.router);
         });

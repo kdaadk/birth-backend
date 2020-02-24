@@ -2,8 +2,9 @@
 import {ExpertModeBuilder} from "../domain/expertModeBuilder";
 import {UserInputJs} from "../models/front/userInputJs";
 import {BaZiDateTimeJsBuilder} from "../domain/baZiDateTimeJsBuilder";
+import {BaseController} from "./base.controller";
 
-class CalculatorController {
+class CalculatorController implements BaseController {
     public path = '/calculator';
     public router = express.Router();
     
@@ -17,7 +18,6 @@ class CalculatorController {
     }
 
     getExpertMode = (request: express.Request, response: express.Response) => {
-        response.setHeader('Access-Control-Allow-Origin', '*');
         const input: UserInputJs = request.body;
         response.send(ExpertModeBuilder.build(input));
     };

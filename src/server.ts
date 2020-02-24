@@ -3,7 +3,7 @@ import CalculatorController from './controllers/calculator.controller';
 
 const app = new App(
     [
-        new CalculatorController(),
+        new CalculatorController()
     ],
     5000,
 );
