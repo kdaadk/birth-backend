@@ -17,8 +17,18 @@ export class SetupPentagramPainter {
                 this.setColorsOn(pentagramInnerValues[i], pentagramOuterValues[i], this.colorsOuterValuesIfEqualValues[i]);
         }
 
-        this.setColorsIfUnusual(pentagramInnerValues, pentagramOuterValues);
-        this.setColorsIfUnusual(pentagramOuterValues, pentagramInnerValues);
+        //exclusions ToDo: refactor
+        if (pentagramInnerValues.filter(x => x.color === Constants.Red).length === 2)
+            this.setColorsIfExclusion(pentagramInnerValues, pentagramOuterValues);
+        
+        if (pentagramOuterValues.filter(x => x.color === Constants.Red).length === 2)
+            this.setColorsIfExclusion(pentagramOuterValues, pentagramInnerValues);
+
+        if (pentagramInnerValues.filter(x => x.color === Constants.Red).length === 1)
+            this.setColorsIfOneRed(pentagramInnerValues, pentagramOuterValues);
+
+        if (pentagramOuterValues.filter(x => x.color === Constants.Red).length === 1)
+            this.setColorsIfOneRed(pentagramOuterValues, pentagramInnerValues);
     }
 
     private static readonly colorsOuterValuesIfEqualValues: string[] =
@@ -29,19 +39,29 @@ export class SetupPentagramPainter {
         inner.color = outerColor === Constants.Blue ? Constants.Red : Constants.Blue;
     }
 
-    private static setColorsIfUnusual(innerEnergies: PentagramEnergy[], outerEnergies: PentagramEnergy[]) {
-        if (innerEnergies.filter(x => x.color === Constants.Red).length !== 2)
-            return;
-
+    private static setColorsIfExclusion(side: PentagramEnergy[], oppositeSide: PentagramEnergy[]) {
         for (let i = 0; i < 5; i++)
         {
             const nextIndex = i >= 3 ? i - 3 : i + 2;
-            if (innerEnergies[i].color === Constants.Red &&
-                innerEnergies[nextIndex].color === Constants.Red)
+            if (side[i].color === Constants.Red && side[nextIndex].color === Constants.Red)
             {
                 const betweenIndex = i === 4 ? 0 : i + 1;
-                innerEnergies[betweenIndex].color = Constants.Red;
-                outerEnergies[betweenIndex].color = Constants.Blue;
+                side[betweenIndex].color = Constants.Red;
+                oppositeSide[betweenIndex].color = Constants.Blue;
+            }
+        }
+    }
+    private static setColorsIfOneRed(side: PentagramEnergy[], oppositeSide: PentagramEnergy[]) {
+        for (let i = 0; i < 5; i++)
+        {
+            const nextIdx = i === 4 ? 0 : i + 1;
+            const prevIdx = i === 0 ? 4 : i - 1;
+            if (side[i].color === Constants.Red && side[nextIdx].value === 24 && side[prevIdx].value === 24)
+            {
+                side[nextIdx].color = Constants.Red;
+                side[prevIdx].color = Constants.Red;
+                oppositeSide[nextIdx].color = Constants.Blue;
+                oppositeSide[prevIdx].color = Constants.Blue;
             }
         }
     }
