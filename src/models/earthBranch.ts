@@ -37,6 +37,6 @@ EarthBranchRussianDisplay[EarthBranch.Dragon] = "Дракон";
 EarthBranchRussianDisplay[EarthBranch.Snake] = "Змея";
 EarthBranchRussianDisplay[EarthBranch.Horse] = "Лошадь";
 EarthBranchRussianDisplay[EarthBranch.Goat] = "Коза";
-EarthBranchRussianDisplay[EarthBranch.Monkey] = "Обехьяна";
+EarthBranchRussianDisplay[EarthBranch.Monkey] = "Обеpзьяна";
 EarthBranchRussianDisplay[EarthBranch.Rooster] = "Петух";
 EarthBranchRussianDisplay[EarthBranch.Dog] = "Собака";
