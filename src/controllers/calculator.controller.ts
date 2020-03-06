@@ -3,6 +3,7 @@ import {ExpertModeBuilder} from "../domain/expertModeBuilder";
 import {UserInputJs} from "../models/front/userInputJs";
 import {BaZiDateTimeJsBuilder} from "../domain/baZiDateTimeJsBuilder";
 import {BaseController} from "./base.controller";
+var cors = require('cors')
 
 class CalculatorController implements BaseController {
     public path = '/calculator';
@@ -13,6 +14,7 @@ class CalculatorController implements BaseController {
     }
 
     public intializeRoutes() {
+        this.router.all('*', cors());
         this.router.post(this.path, this.getExpertMode);
         this.router.post(`${this.path}/hours`, this.getHours);
     }
