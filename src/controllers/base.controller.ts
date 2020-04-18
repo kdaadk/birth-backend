@@ -3,5 +3,5 @@
 export interface BaseController {
     path: string;
     router: Router;
-    intializeRoutes: () => void
+    initializeRoutes: () => void
 }

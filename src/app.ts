@@ -11,14 +11,16 @@ class App {
         this.app = express();
         this.port = port;
 
-        this.initializeMiddlewares();
+        this.initializeMiddleWares();
         this.initializeControllers(controllers);
     }
 
-    private initializeMiddlewares() {
+    private initializeMiddleWares() {
+        this.app.use(cors());
         this.app.use(bodyParser.json());
         this.app.use(function(req, res, next) {
           res.header("Access-Control-Allow-Origin", "*");
+          res.header("Access-Control-Allow-*");
           res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
           next();
         });

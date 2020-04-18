@@ -3,17 +3,17 @@ import {ExpertModeBuilder} from "../domain/expertModeBuilder";
 import {UserInputJs} from "../models/front/userInputJs";
 import {BaZiDateTimeJsBuilder} from "../domain/baZiDateTimeJsBuilder";
 import {BaseController} from "./base.controller";
-var cors = require('cors')
+let cors = require('cors');
 
 class CalculatorController implements BaseController {
     public path = '/calculator';
     public router = express.Router();
     
     constructor() {
-        this.intializeRoutes();
+        this.initializeRoutes();
     }
 
-    public intializeRoutes() {
+    public initializeRoutes() {
         this.router.all('*', cors());
         this.router.post(this.path, this.getExpertMode);
         this.router.post(`${this.path}/hours`, this.getHours);
@@ -25,9 +25,9 @@ class CalculatorController implements BaseController {
     };
     
     getHours = (request: express.Request, response: express.Response) => {
-        const birthDate: string = request.body;
+        const birthDate: string = request.body.birthDate;
         response.send(BaZiDateTimeJsBuilder.build(birthDate));
-    }
+    };
 }
 
 export default CalculatorController;
