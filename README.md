@@ -4,7 +4,7 @@
 ReactApp helps you calculate a person's Constitution by date of birth, based on "BaZi" - Chinese Astrology.     
 
 **App divided on back and front parts:**
-- [Backend](https://github.com/kdaadk/birth-backend) wrote on TypeScipt and launched on https://xenomorph-server.herokuapp.com/   
+- [Backend](https://github.com/kdaadk/birth-backend) wrote on TypeScipt and launched on https://birth-date.herokuapp.com/   
 - [Frontend](https://github.com/kdaadk/birth-frontend) wrote on React and launched on https://birth.netlify.app/   
 
 **App has:** 
